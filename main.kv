@@ -1,0 +1,436 @@
+#:import sm kivy.uix.screenmanager
+ScreenManager:
+    id:manager
+    transition:sm.FadeTransition(duration=.0)
+    MDScreen:
+        name:"home"
+        MDBottomNavigation:
+            id:bnav
+            panel_color: 0, 0, 0, 1
+            MDBottomNavigationItem:
+                name: 'home'
+                text: 'Do It.'
+                icon: 'thumb-up'
+                FloatLayout:
+                    MDLabel:
+                        text:"Day" + " " + app.day_counter
+                        font_style:"H5"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.5,"center_y":.9}
+                    MDLabel:
+                        text:app.today_date
+                        font_style:"Subtitle2"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.8,"center_y":.95}
+                    MDProgressBar:
+                        id: progress
+                        pos_hint: {"center_y": .83, "center_x":.5}
+                        type: "indeterminate"
+                        color:83 / 225, 186 / 225, 115 / 225, 1
+                        #size: 9, 5
+                        size_hint:.9, 3
+                        max:7
+
+                    MDLabel:
+                        text:"0"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.04,"center_y":.81}
+                    MDLabel:
+                        text:"1"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.18,"center_y":.81}
+                    MDLabel:
+                        text:"2"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.3,"center_y":.81}
+                    MDLabel:
+                        text:"3"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.43,"center_y":.81}
+                    MDLabel:
+                        text:"4"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.56,"center_y":.81}
+                    MDLabel:
+                        text:"5"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.69,"center_y":.81}
+                    MDLabel:
+                        text:"6"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.82,"center_y":.81}
+
+                    MDLabel:
+                        text:"7"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.95,"center_y":.81}
+
+                    MDIcon:
+                        id:dy7
+                        icon:"trophy"
+                        halign:"center"
+                        pos_hint:{"center_x":.95,"center_y":.78}
+                        theme_text_color:"Custom"
+                        text_color: 1, 1, 0, 1
+
+                    MDIcon:
+                        id:dy3
+                        icon:"trophy-award"
+                        halign:"center"
+                        pos_hint:{"center_x":.43,"center_y":.78}
+                        theme_text_color:"Custom"
+
+                    MDLabel:
+                        text:app.insult
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.5,"center_y":.65}
+                    CheckCard:
+                        on_release:
+                            app.today_no()
+                        MDIcon:
+                            id:check
+                            halign:"center"
+                            font_size: "89sp"
+                            theme_text_color:"Custom"
+                            text_color: 83 / 225, 186 / 225, 115 / 225, 1
+                            md_bg_color: 0, 0, 0, 1
+                            radius: [50]
+                    MDRaisedButton:
+                        id:usr
+                        text: "Insult Me"
+                        size_hint: .4, .06
+                        pos_hint:{'center_x':.5, 'center_y':.1}
+                        #md_bg_color: 83 / 225, 186 / 225, 115 / 225, 1
+                        md_bg_color: .2, .2, .2 , 1
+                        on_release:
+                            app.insult_you()
+
+            MDBottomNavigationItem:
+                name: 'stat'
+                text: 'Stats.'
+                icon: 'chart-timeline-variant-shimmer'
+                FloatLayout:
+                    MDIcon:
+                        icon:"information-variant"
+                        pos_hint:{"center_x":.9,"center_y":.92}
+                        halign:"center"
+                        font_size: "45sp"
+                    MDIconButton:
+                        icon:"information-variant"
+                        pos_hint:{"center_x":.9,"center_y":.92}
+                        halign:"center"
+                        font_size: "45sp"
+                        on_release:
+                            manager.current= "info"
+                    MDIcon:
+                        id:star_three_trophy
+                        icon:"star"
+                        pos_hint:{"center_x":.5,"center_y":.92}
+                        halign:"center"
+                        font_size: "45sp"
+                    MDIcon:
+                        id:star_one_trophy
+                        icon:"star"
+                        pos_hint:{"center_x":.4,"center_y":.9}
+                        halign:"center"
+                        font_size: "25sp"
+                    MDIcon:
+                        id:star_two_trophy
+                        icon:"star"
+                        pos_hint:{"center_x":.6,"center_y":.9}
+                        halign:"center"
+                        font_size: "25sp"
+                    MDLabel:
+                        text:"A week"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.15,"center_y":.75}
+                    MDIcon:
+                        icon:"calendar-range"
+                        pos_hint: {"center_x": .2, "center_y":.72}
+                    MDProgressBar:
+                        pos_hint: {"center_x": .5, "center_y":.72}
+                        type: "indeterminate"
+                        color:83 / 225, 186 / 225, 115 / 225, 1
+                        #size: 9, 5
+                        size_hint:.8, 3
+                        max:7
+                        value:int(app.day_counter)
+                    MDLabel:
+                        text:"A Month"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.15,"center_y":.6}
+                    MDProgressBar:
+                        pos_hint: {"center_x": .5, "center_y":.57}
+                        type: "indeterminate"
+                        color: 1, 1, 0, 1
+                        #size: 9, 5
+                        size_hint:.9, 3
+                        max:28
+                        value:int(app.month_counter)
+                    MDLabel:
+                        text:"Star 1"
+                        font_style:"Body1"
+                        font_size: "25sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.25,"center_y":.46}
+                    MDLabel:
+                        text:"Star 3"
+                        font_style:"Body1"
+                        font_size: "25sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.5,"center_y":.5}
+                    MDLabel:
+                        text:"Star 2"
+                        font_style:"Body1"
+                        font_size: "25sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.75,"center_y":.46}
+                    MDLabel:
+                        text:app.star_one + "/30"
+                        font_style:"Body1"
+                        font_size: "25sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.25,"center_y":.41}
+                        theme_text_color:"Custom"
+                        text_color: 83 / 225, 186 / 225, 115 / 225, 1
+                    MDLabel:
+                        text:app.star_three + "/90"
+                        font_style:"Body1"
+                        font_size: "25sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.5,"center_y":.45}
+                        theme_text_color:"Custom"
+                        text_color: 1, 1, 0, 1
+                    MDLabel:
+                        text:app.star_two + "/60"
+                        font_style:"Body1"
+                        font_size: "25sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.75,"center_y":.41}
+                        theme_text_color:"Custom"
+                        text_color: 83 / 225, 186 / 225, 115 / 225, 1
+
+                    MDLabel:
+                        text:"Unlock badges"
+                        font_style:"Body1"
+                        font_size: "15sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.5,"center_y":.35}
+                    TrophyCard:
+                        id:tie
+                        pos_hint:{"center_x":.2,"center_y":.23}
+                        MDIcon:
+                            id:gentle
+                            icon:"tie"
+                            pos_hint:{"center_x":.5,"center_y":.5}
+                            halign:"center"
+                            font_size: "45sp"
+                            theme_text_color:"Custom"
+                            text_color: .3, .3, .3, 1
+                            md_bg_color: 0, 0, 0, 1
+                            radius: [50]
+                    MDLabel:
+                        id:gentle_text
+                        text:"[s]Gentleman[/s]"
+                        font_style:"Body1"
+                        font_size: "20sp"
+                        halign:"center"
+                        markup:True
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.2,"center_y":.1}
+                        theme_text_color:"Custom"
+                        text_color: .3, .3, .3, 1
+                    TrophyCard:
+                        id:top_g
+                        pos_hint:{"center_x":.5,"center_y":.23}
+                        MDIcon:
+                            id:topG
+                            icon:"account-tie"
+                            pos_hint:{"center_x":.5,"center_y":.5}
+                            halign:"center"
+                            font_size: "45sp"
+                            theme_text_color:"Custom"
+                            text_color:  .3, .3, .3, 1
+                            md_bg_color: 0, 0, 0, 1
+                            radius: [50]
+                    MDLabel:
+                        id:topG_text
+                        text:"[s]Top G[/s]"
+                        font_style:"Body1"
+                        font_size: "20sp"
+                        halign:"center"
+                        markup:True
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.5,"center_y":.1}
+                        theme_text_color:"Custom"
+                        text_color: .3, .3, .3, 1
+                    TrophyCard:
+                        id:knight
+                        pos_hint:{"center_x":.8,"center_y":.23}
+                        MDIcon:
+                            id:knight_t
+                            icon:"horse-human"
+                            pos_hint:{"center_x":.5,"center_y":.5}
+                            halign:"center"
+                            font_size: "45sp"
+                            theme_text_color:"Custom"
+                            text_color:  .3, .3, .3, 1
+                            md_bg_color: 0, 0, 0, 1
+                            radius: [50]
+                    MDLabel:
+                        id:knight_text
+                        text:"[s]Knight[/s]"
+                        font_style:"Body1"
+                        font_size: "20sp"
+                        markup:True
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.8,"center_y":.1}
+                        theme_text_color:"Custom"
+                        text_color: .3, .3, .3, 1
+    MDScreen:
+        name:"info"
+        FloatLayout:
+            MDIcon:
+                icon:"chevron-left"
+                pos_hint:{"center_x":.1,"center_y":.92}
+                halign:"center"
+                font_size: "40sp"
+            MDIconButton:
+                icon:"chevron-left"
+                pos_hint:{"center_x":.1,"center_y":.92}
+                halign:"center"
+                icon_size: "64sp"
+                on_release:
+                    manager.current= "home"
+            MDLabel:
+                text:"Tate"
+                font_style:"H3"
+                #font_size: "20sp"
+                markup:True
+                halign:"center"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_x":.5,"center_y":.9}
+            CheckCard:
+                pos_hint:{"center_x":.5, "center_y":.73}
+                size: app.size_x, app.size_x/2
+                MDLabel:
+                    text:"Tate this is an app which will help you in your masturbation problem or 'enjoyment' helps buy counting number of day which you haven't do the did, you can get different badges buy completing different challenges, and we have over 500+ insults just for you to pass time"
+                    font_style:"Body2"
+                    font_size: "20sp"
+                    markup:True
+                    halign:"center"
+                    font_name:'components/fonts/Gill Sans.otf'
+                    pos_hint:{"center_x":.5,"center_y":.5}
+                    theme_text_color:"Custom"
+                    text_color: .8, .8, .8, 1
+            MDLabel:
+                text:"Contacts"
+                font_style:"H5"
+                #font_size: "20sp"
+                markup:True
+                halign:"center"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_x":.5,"center_y":.53}
+
+            CheckCard:
+                pos_hint:{"center_x":.5, "center_y":.4}
+                size: app.size_x, app.size_x/3
+                MDLabel:
+                    text:"Email:aqeglipambuya@gmail.com"
+                    font_style:"Body2"
+                    font_size: "20sp"
+                    markup:True
+                    halign:"center"
+                    font_name:'components/fonts/Gill Sans.otf'
+                    pos_hint:{"center_x":.1, "center_y":.5}
+                    theme_text_color:"Custom"
+                    text_color: .8, .8, .8, 1
+            MDLabel:
+                text:"Alpha inc"
+                font_style:"Body2"
+                font_size: "20sp"
+                markup:True
+                halign:"center"
+                font_name:'components/fonts/Gill Sans.otf'
+                pos_hint:{"center_x":.5, "center_y":.1}
+                theme_text_color:"Custom"
+                text_color: .7, .7, .7, 1
+
+
+<TrophyCard@MDCard>:
+    #orientation: "vertical"
+    md_bg_color: 1, 1, 1, 1
+    padding: "10dp"
+    #spacing: "5dp"
+    border_radius: 50
+    border_color_a: .5
+    border_color_a: 1
+    adaptive_height:True
+    radius: [50]
+    size_hint: None, None
+    size: app.size_x/4, app.size_x/4
+    focus_behavior: False
+    ripple_color:.9, .9, .95, 1
+    ripple_behavior: True
+
+<CheckCard@MDCard>:
+    #orientation: "vertical"
+    md_bg_color: 1, 1, 1, 1
+    pos_hint:{"center_x":.5,"center_y":.4}
+    padding: "10dp"
+    #spacing: "5dp"
+    border_radius: 50
+    border_color_a: .5
+    border_color_a: 1
+    adaptive_height:True
+    radius: [50]
+    size_hint: None, None
+    size: app.size_x/1.5, app.size_x/1.5
+    focus_behavior: False
+    ripple_color:.9, .9, .95, 1
+    ripple_behavior: True
