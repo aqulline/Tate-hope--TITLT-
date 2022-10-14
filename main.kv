@@ -19,6 +19,22 @@ ScreenManager:
                         halign:"center"
                         font_name:'components/fonts/Gill Sans.otf'
                         pos_hint:{"center_x":.5,"center_y":.9}
+
+                    MDIcon:
+                        id:emotion
+                        halign:"center"
+                        font_size:"35sp"
+                        pos_hint:{"center_x":.1,"center_y":.95}
+
+                    MDLabel:
+                        id:emo_text
+                        text:f"[ref=hello]" + "" + "[/ref]"
+                        halign:"center"
+                        font_size:"11sp"
+                        markup:True
+                        pos_hint:{"center_x":.1,"center_y":.91}
+                        on_ref_press:
+                            app.day_missed()
                     MDLabel:
                         text:app.today_date
                         font_style:"Subtitle2"
@@ -131,6 +147,8 @@ ScreenManager:
                         text: "Insult Me"
                         size_hint: .4, .06
                         pos_hint:{'center_x':.5, 'center_y':.1}
+                        font_size:"20sp"
+                        font_name:"components/fonts/Gill Sans.otf"
                         #md_bg_color: 83 / 225, 186 / 225, 115 / 225, 1
                         md_bg_color: .2, .2, .2 , 1
                         on_release:
@@ -158,31 +176,42 @@ ScreenManager:
                         icon:"star"
                         pos_hint:{"center_x":.5,"center_y":.92}
                         halign:"center"
-                        font_size: "45sp"
+                        font_size: "60sp"
                     MDIcon:
                         id:star_one_trophy
                         icon:"star"
                         pos_hint:{"center_x":.4,"center_y":.9}
                         halign:"center"
-                        font_size: "25sp"
+                        font_size: "40sp"
                     MDIcon:
                         id:star_two_trophy
                         icon:"star"
                         pos_hint:{"center_x":.6,"center_y":.9}
                         halign:"center"
-                        font_size: "25sp"
+                        font_size: "40sp"
                     MDLabel:
                         text:"A week"
                         font_style:"Body1"
                         #font_size: "13sp"
                         halign:"center"
                         font_name:'components/fonts/Gill Sans.otf'
-                        pos_hint:{"center_x":.15,"center_y":.75}
+                        pos_hint:{"center_x":.23,"center_y":.75}
                     MDIcon:
-                        icon:"calendar-range"
-                        pos_hint: {"center_x": .2, "center_y":.72}
+                        halign:"center"
+                        icon:"calendar-week"
+                        font_size: "40sp"
+                        pos_hint: {"center_x": .08, "center_y":.72}
+                        theme_text_color:"Custom"
+                        text_color:36/255, 146/255, 255/255, 1
+                    MDLabel:
+                        text:str(int((int(app.day_counter)/7)*100)) + "%"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.9,"center_y":.75}
                     MDProgressBar:
-                        pos_hint: {"center_x": .5, "center_y":.72}
+                        pos_hint: {"center_x": .545, "center_y":.72}
                         type: "indeterminate"
                         color:83 / 225, 186 / 225, 115 / 225, 1
                         #size: 9, 5
@@ -195,63 +224,77 @@ ScreenManager:
                         #font_size: "13sp"
                         halign:"center"
                         font_name:'components/fonts/Gill Sans.otf'
-                        pos_hint:{"center_x":.15,"center_y":.6}
+                        pos_hint:{"center_x":.25,"center_y":.6}
+                    MDIcon:
+                        halign:"center"
+                        icon:"calendar-month"
+                        font_size: "40sp"
+                        pos_hint: {"center_x": .08, "center_y":.57}
+                        theme_text_color:"Custom"
+                        text_color:36/255, 146/255, 255/255, 1
+                    MDLabel:
+                        text:str(int((int(app.month_counter)/28)*100)) + "%"
+                        font_style:"Body1"
+                        #font_size: "13sp"
+                        halign:"center"
+                        font_name:'components/fonts/Gill Sans.otf'
+                        pos_hint:{"center_x":.9,"center_y":.6}
                     MDProgressBar:
-                        pos_hint: {"center_x": .5, "center_y":.57}
+                        pos_hint: {"center_x": .545, "center_y":.57}
                         type: "indeterminate"
                         color: 1, 1, 0, 1
                         #size: 9, 5
-                        size_hint:.9, 3
+                        size_hint:.8, 3
                         max:28
                         value:int(app.month_counter)
                     MDLabel:
                         text:"Star 1"
                         font_style:"Body1"
-                        font_size: "25sp"
+                        font_size: "23sp"
                         halign:"center"
                         font_name:'components/fonts/Gill Sans.otf'
-                        pos_hint:{"center_x":.25,"center_y":.46}
+                        pos_hint:{"center_x":.25,"center_y":.5}
                     MDLabel:
                         text:"Star 3"
                         font_style:"Body1"
-                        font_size: "25sp"
+                        font_size: "23sp"
                         halign:"center"
                         font_name:'components/fonts/Gill Sans.otf'
                         pos_hint:{"center_x":.5,"center_y":.5}
                     MDLabel:
                         text:"Star 2"
                         font_style:"Body1"
-                        font_size: "25sp"
+                        font_size: "23sp"
                         halign:"center"
                         font_name:'components/fonts/Gill Sans.otf'
-                        pos_hint:{"center_x":.75,"center_y":.46}
+                        pos_hint:{"center_x":.75,"center_y":.5}
                     MDLabel:
-                        text:app.star_one + "/30"
+                        text:str(int(int(app.star_one) / 30 * 100)) + "%"
                         font_style:"Body1"
-                        font_size: "25sp"
+                        font_size: "20sp"
                         halign:"center"
                         font_name:'components/fonts/Gill Sans.otf'
-                        pos_hint:{"center_x":.25,"center_y":.41}
+                        pos_hint:{"center_x":.25,"center_y":.45}
                         theme_text_color:"Custom"
-                        text_color: 83 / 225, 186 / 225, 115 / 225, 1
+                        text_color: .7, .7, .7, 1
                     MDLabel:
-                        text:app.star_three + "/90"
+                        text:str(int(int(app.star_one) / 90 * 100)) + "%"
                         font_style:"Body1"
-                        font_size: "25sp"
+                        font_size: "20sp"
                         halign:"center"
                         font_name:'components/fonts/Gill Sans.otf'
                         pos_hint:{"center_x":.5,"center_y":.45}
                         theme_text_color:"Custom"
-                        text_color: 1, 1, 0, 1
+                        text_color: .7, .7, .7, 1
                     MDLabel:
-                        text:app.star_two + "/60"
+                        text:str(int(int(app.star_one) / 60 * 100)) + "%"
                         font_style:"Body1"
-                        font_size: "25sp"
+                        font_size: "20sp"
                         halign:"center"
                         font_name:'components/fonts/Gill Sans.otf'
-                        pos_hint:{"center_x":.75,"center_y":.41}
+                        pos_hint:{"center_x":.75,"center_y":.45}
                         theme_text_color:"Custom"
-                        text_color: 83 / 225, 186 / 225, 115 / 225, 1
+                        text_color: .7, .7, .7, 1
 
                     MDLabel:
                         text:"Unlock badges"
@@ -359,7 +402,7 @@ ScreenManager:
                 pos_hint:{"center_x":.5, "center_y":.73}
                 size: app.size_x, app.size_x/2
                 MDLabel:
-                    text:"Tate this is an app which will help you in your masturbation problem or 'enjoyment' helps buy counting number of day which you haven't do the did, you can get different badges buy completing different challenges, and we have over 500+ insults just for you to pass time"
+                    text:"Tate this is an app which will help you in your masturbation problem or 'enjoyment' helps by counting number of days which you haven't do the did, you can get different badges buy completing different challenges, and we have over 500+ insults just waiting for you to feel bad about your self and pass time"
                     font_style:"Body2"
                     font_size: "20sp"
                     markup:True

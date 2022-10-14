@@ -2,6 +2,7 @@ from kivy.properties import NumericProperty, StringProperty
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy import utils
+from kivy.metrics import sp
 from kivymd.toast import toast
 
 from database import DataBase as DB
@@ -24,6 +25,7 @@ class MainApp(MDApp):
     today_date = StringProperty("0")
     total = StringProperty("0")
     insult = StringProperty("")
+    previous_d = StringProperty("")
 
     # progress
     star_one = StringProperty("0")
@@ -54,6 +56,25 @@ class MainApp(MDApp):
         elif DB.check_status(DB()):
             chk = self.root.ids.check
             chk.icon = "dots-horizontal"
+        if self.previous_d == "yes":
+
+            txt = self.root.ids.emo_text
+            txt.text = "NoIcE"
+            emo_icon = self.root.ids.emotion
+            emo_icon.icon = "emoticon"
+            emo_icon.theme_text_color = "Custom"
+            emo_icon.text_color = .8, .7, 0, 1
+
+        elif self.previous_d == "no":
+            emo_icon = self.root.ids.emotion
+            emo_icon.icon = "emoticon-angry"
+            txt = self.root.ids.emo_text
+            txt.text = "Sad"
+            emo_icon.theme_text_color = "Custom"
+            emo_icon.text_color = .8, 0, 0, 1
+
+
+
 
     def trophies(self):
         self.star_one_trophy()
@@ -124,15 +145,36 @@ class MainApp(MDApp):
                 self.day_counter = str(int(self.day_counter) + 1)
                 DB.update_week(DB(), self.day_counter)
                 self.query_data()
+                emo_icon = self.root.ids.emotion
+                emo_icon.icon = "emoticon-cool"
+                txt = self.root.ids.emo_text
+                txt.text = "Cool"
+                emo_icon.theme_text_color = "Custom"
+                emo_icon.text_color = .8, .7, 0, 1
             else:
                 self.day_counter = "0"
                 self.day_counter = str(int(self.day_counter) + 1)
                 self.query_data()
+                emo_icon = self.root.ids.emotion
+                emo_icon.icon = "emoticon-cool"
+                txt = self.root.ids.emo_text
+                txt.text = "Cool"
+                emo_icon.theme_text_color = "Custom"
+                emo_icon.text_color = .8, .7, 0, 1
         elif DB.check_status(DB()):
-            toast("Come on man! wait for at least a day", duration=5.0)
+            toast("Come on man! wait for at least a day")
 
     def insult_you(self):
         self.insult = insults()[0]
+
+    def day_missed(self):
+        txt = self.root.ids.emo_text
+        if self.previous_d == "yes":
+            txt.text = "Mad"
+            toast("Nice you did not miss a day")
+        elif self.previous_d == "no":
+            toast("You missed a day, stupid fuck!")
+            txt.text = "Mad"
 
     def query_data(self):
         data = DB.query_data(DB())
@@ -142,6 +184,7 @@ class MainApp(MDApp):
         self.star_one = str(data[5])
         self.star_two = str(data[6])
         self.star_three = str(data[7])
+        self.previous_d = str(data[4])
         self.today_date = DB.date_format(DB())
         self.week_progress()
         self.trophies()
