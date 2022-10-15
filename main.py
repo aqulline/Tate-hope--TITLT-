@@ -3,7 +3,6 @@ from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy import utils
 from kivymd.toast import toast
-
 from database import DataBase as DB
 from insults import insults
 
@@ -33,6 +32,7 @@ class MainApp(MDApp):
 
     def on_start(self):
         self.query_data()
+
 
     def week_progress(self):
         progress = self.root.ids.progress
@@ -162,6 +162,7 @@ class MainApp(MDApp):
                 emo_icon.text_color = .8, .7, 0, 1
         elif DB.check_status(DB()):
             toast("Come on man! wait for at least a day")
+
 
     def insult_you(self):
         self.insult = insults()[0]

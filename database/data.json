@@ -1,12 +1,12 @@
 {
       "data": {
-            "total": "2",
-            "this_week": "2",
-            "this_month": "2",
-            "previous_day": "no",
+            "total": "0",
+            "this_week": "0",
+            "this_month": "0",
+            "previous_day": "yes",
             "prev_date": 14,
-            "star_one": 2,
-            "star_two": 2,
-            "star_three": 2
+            "star_one": 0,
+            "star_two": 0,
+            "star_three": 0
       }
 }
