@@ -2,7 +2,6 @@ from kivy.properties import NumericProperty, StringProperty
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy import utils
-from kivy.metrics import sp
 from kivymd.toast import toast
 
 from database import DataBase as DB
