@@ -142,17 +142,19 @@ ScreenManager:
                             text_color: 83 / 225, 186 / 225, 115 / 225, 1
                             md_bg_color: 0, 0, 0, 1
                             radius: [50]
-                    MDRaisedButton:
-                        id:usr
-                        text: "Insult Me"
-                        size_hint: .4, .06
-                        pos_hint:{'center_x':.5, 'center_y':.1}
-                        font_size:"20sp"
-                        font_name:"components/fonts/Gill Sans.otf"
-                        #md_bg_color: 83 / 225, 186 / 225, 115 / 225, 1
-                        md_bg_color: .2, .2, .2 , 1
+                    CheckCard:
+                        size: app.size_x/5, app.size_x/5
+                        pos_hint:{'center_x':.49, 'center_y':.1}
                         on_release:
                             app.insult_you()
+                        MDIcon:
+                            icon:"skull-outline"
+                            halign:"center"
+                            font_size: "30sp"
+                            theme_text_color:"Custom"
+                            text_color: 1, .1, 1, 1
+                            md_bg_color: 0, 0, 0, 1
+                            radius: [50]
 
             MDBottomNavigationItem:
                 name: 'stat'

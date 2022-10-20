@@ -1,10 +1,10 @@
-from kivy.properties import NumericProperty, StringProperty
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy import utils
 from kivymd.toast import toast
 from database import DataBase as DB
 from insults import insults
+from kivy import properties as P
 
 Window.keyboard_anim_args = {"d": .2, "t": "linear"}
 Window.softinput_mode = "below_target"
@@ -15,20 +15,20 @@ if utils.platform != 'android':
 
 class MainApp(MDApp):
     # APP
-    size_x, size_y = NumericProperty(0), NumericProperty(0)
+    size_x, size_y = P.NumericProperty(0), P.NumericProperty(0)
 
     # datas
-    day_counter = StringProperty("0")
-    month_counter = StringProperty("0")
-    today_date = StringProperty("0")
-    total = StringProperty("0")
-    insult = StringProperty("")
-    previous_d = StringProperty("")
+    day_counter = P.StringProperty("0")
+    month_counter = P.StringProperty("0")
+    today_date = P.StringProperty("0")
+    total = P.StringProperty("0")
+    insult = P.StringProperty("")
+    previous_d = P.StringProperty("")
 
     # progress
-    star_one = StringProperty("0")
-    star_two = StringProperty("0")
-    star_three = StringProperty("0")
+    star_one = P.StringProperty("0")
+    star_two = P.StringProperty("0")
+    star_three = P.StringProperty("0")
 
     def on_start(self):
         self.query_data()
