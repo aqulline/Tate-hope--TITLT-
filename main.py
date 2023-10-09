@@ -140,6 +140,19 @@ class MainApp(MDApp):
 
     def today_no(self):
         if not DB.check_status(DB()):
+            print(self.day_counter)
+            if self.day_counter == "7":
+                self.day_counter = "0"
+                self.day_counter = str(int(self.day_counter) + 1)
+                DB.update_week(DB(), self.day_counter)
+                self.query_data()
+                emo_icon = self.root.ids.emotion
+                emo_icon.icon = "emoticon-cool"
+                txt = self.root.ids.emo_text
+                txt.text = "Cool"
+                emo_icon.theme_text_color = "Custom"
+                emo_icon.text_color = .8, .7, 0, 1
+
             if self.day_counter < "7":
                 self.day_counter = str(int(self.day_counter) + 1)
                 DB.update_week(DB(), self.day_counter)
