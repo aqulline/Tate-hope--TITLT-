@@ -1,3 +1,4 @@
+
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy import utils
@@ -11,6 +12,11 @@ Window.softinput_mode = "below_target"
 
 if utils.platform != 'android':
     Window.size = (412, 732)
+else:
+    from kivads import (
+        InterstitialAd,
+        TestID,
+    )
 
 
 class MainApp(MDApp):
@@ -201,6 +207,12 @@ class MainApp(MDApp):
         self.today_date = DB.date_format(DB())
         self.week_progress()
         self.trophies()
+
+    """interstitial = InterstitialAd(TestID.INTERSTITIAL)
+
+    def reload_ads(self, *args):
+        toast("Reloading Ads")
+        self.interstitial = InterstitialAd(TestID.INTERSTITIAL)"""
 
     def build(self):
         self.size_x, self.size_y = Window.size

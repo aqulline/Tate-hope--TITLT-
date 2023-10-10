@@ -159,6 +159,7 @@ ScreenManager:
                     CheckCard:
                         on_release:
                             app.today_no()
+                            #app.interstitial.show()
                         MDIcon:
                             id:check
                             halign:"center"
@@ -173,6 +174,7 @@ ScreenManager:
                         pos_hint:{'center_x':.49, 'center_y':.1}
                         on_release:
                             app.insult_you()
+                            #app.reload_ads()
 	                    MDIcon:
 	                        icon:"skull-outline"
 	                        rounded_button:True
