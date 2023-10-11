@@ -1,4 +1,5 @@
-
+from kivy.clock import Clock
+from kivy.properties import NumericProperty
 from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy import utils
@@ -14,9 +15,8 @@ if utils.platform != 'android':
     Window.size = (412, 732)
 else:
     from kivads import (
-        InterstitialAd,
-        TestID,
-    )
+        InterstitialAd, TestID,
+)
 
 
 class MainApp(MDApp):
@@ -38,7 +38,17 @@ class MainApp(MDApp):
 
     def on_start(self):
         self.query_data()
+        Clock.schedule_once(self.query_data, .2)
 
+    def on_pause(self):
+        self.reload_ads()
+
+        return True
+
+    def on_resume(self):
+        self.interstitial.show()
+
+        return True
 
     def week_progress(self):
         progress = self.root.ids.progress
@@ -77,9 +87,6 @@ class MainApp(MDApp):
             txt.text = "Sad"
             emo_icon.theme_text_color = "Custom"
             emo_icon.text_color = .8, 0, 0, 1
-
-
-
 
     def trophies(self):
         self.star_one_trophy()
@@ -182,9 +189,19 @@ class MainApp(MDApp):
         elif DB.check_status(DB()):
             toast("Come on man! wait for at least a day")
 
+    ads_counter = NumericProperty(0)
 
     def insult_you(self):
         self.insult = insults()[0]
+        self.adds_reload_counter()
+
+    def adds_reload_counter(self):
+        if self.ads_counter < 3:
+            self.reload_ads()
+            self.ads_counter += 1
+        else:
+            self.ads_counter = 0
+            self.interstitial.show()
 
     def day_missed(self):
         txt = self.root.ids.emo_text
@@ -195,7 +212,8 @@ class MainApp(MDApp):
             toast("You missed a day, stupid fuck!")
             txt.text = "Mad"
 
-    def query_data(self):
+    def query_data(self, *args):
+        self.reload_ads()
         data = DB.query_data(DB())
         self.total = data[0]
         self.day_counter = data[1]
@@ -207,12 +225,13 @@ class MainApp(MDApp):
         self.today_date = DB.date_format(DB())
         self.week_progress()
         self.trophies()
+        self.interstitial.show()
 
-    """interstitial = InterstitialAd(TestID.INTERSTITIAL)
+    interstitial = InterstitialAd(TestID.INTERSTITIAL)
 
     def reload_ads(self, *args):
         toast("Reloading Ads")
-        self.interstitial = InterstitialAd(TestID.INTERSTITIAL)"""
+        self.interstitial = InterstitialAd(TestID.INTERSTITIAL)
 
     def build(self):
         self.size_x, self.size_y = Window.size

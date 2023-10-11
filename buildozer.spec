@@ -29,7 +29,7 @@ source.include_exts = py,png,jpg,kv,atlas,txt, otf, json
 #source.exclude_patterns = license,images/*/*.jpg
 
 # (str) Application versioning (method 1)
-version = 0.1
+version = 0.51
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
@@ -101,7 +101,7 @@ android.permissions = android.permission.INTERNET, (name=android.permission.WRIT
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 31
+android.api = 33
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
@@ -110,7 +110,7 @@ android.permissions = android.permission.INTERNET, (name=android.permission.WRIT
 #android.sdk = 20
 
 # (str) Android NDK version to use
-#android.ndk = 23b
+android.ndk = 25b
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
@@ -201,7 +201,7 @@ android.add_src = src
 #android.add_resources =
 
 # (list) Gradle dependencies to add
-android.gradle_dependencies = "com.google.android.gms:play-services-ads:20.3.0"
+android.gradle_dependencies = com.google.android.gms:play-services-ads:20.3.0
 
 # (bool) Enable AndroidX support. Enable when 'android.gradle_dependencies'
 # contains an 'androidx' package, or any package from Kotlin source.
@@ -260,7 +260,7 @@ android.gradle_dependencies = "com.google.android.gms:play-services-ads:20.3.0"
 #android.wakelock = False
 
 # (list) Android application meta-data to set (key=value format)
-android.meta_data = com.google.android.gms.ads.APPLICATION_ID=ca-app-pub-3940256099942544~3347511713
+android.meta_data = com.google.android.gms.ads.APPLICATION_ID=ca-app-pub-2675239399461909~8314197228
 
 # (list) Android library project to add (will be added in the
 # project.properties automatically.)

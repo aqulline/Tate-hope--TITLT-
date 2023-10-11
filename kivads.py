@@ -365,7 +365,7 @@ class TestID:
     Remeber to change these when you do the final build for your app or you won't earn any money.
     """
 
-    INTERSTITIAL = "ca-app-pub-3940256099942544/1033173712"
+    INTERSTITIAL = "ca-app-pub-2675239399461909~8314197228"
     """ Test id for Interstitial ads
     """
 

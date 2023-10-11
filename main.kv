@@ -157,35 +157,38 @@ ScreenManager:
                         text_color: 1, 1, 1, 1
 
                     CheckCard:
+                        pos_hint:{"center_x":.5,"center_y":.4}
                         on_release:
                             app.today_no()
-                            #app.interstitial.show()
-                        MDIcon:
-                            id:check
-                            halign:"center"
-                            font_size: "250sp"
-                            theme_text_color:"Custom"
-                            text_color: 83 / 225, 186 / 225, 115 / 225, 1
-                            md_bg_color: 0, 0, 0, 1
-                            radius: 50
-                            #pos_hint:{'center_x':.49, 'center_y':.5}
+                            app.interstitial.show()
+                        FloatLayout:
+	                        MDIcon:
+	                            id:check
+	                            halign:"center"
+	                            font_size: "300sp"
+	                            theme_text_color:"Custom"
+	                            text_color: 83 / 225, 186 / 225, 115 / 225, 1
+	                            md_bg_color: 0, 0, 0, 1
+	                            radius: 50
+	                            pos_hint:{'center_x':.5, 'center_y':.5}
                     CheckCard:
                         size: app.size_x/5, app.size_x/5
-                        pos_hint:{'center_x':.49, 'center_y':.1}
+                        pos_hint:{'center_x':.49, 'center_y':.09}
                         on_release:
                             app.insult_you()
-                            #app.reload_ads()
-	                    MDIcon:
-	                        icon:"skull-outline"
-	                        rounded_button:True
-	                        halign:"center"
-	                        font_size: "58sp"
-	                        icon_size:dp("90")
-	                        theme_text_color:"Custom"
-	                        text_color: 1, .1, 1, 1
-	                        #pos_hint:{'center_x':.49, 'center_y':.1}
-	                        md_bg_color: 0, 0, 0, 1
-	                        radius: [50]
+                        FloatLayout:
+		                    MDIcon:
+		                        icon:"skull-outline"
+		                        rounded_button:True
+		                        halign:"center"
+		                        font_size: "63sp"
+		                        icon_size:dp("90")
+		                        theme_text_color:"Custom"
+		                        text_color: 1, .1, 1, 1
+		                        pos_hint:{'center_x':.49, 'center_y':.1}
+		                        md_bg_color: 0, 0, 0, 1
+		                        radius: [50]
+		                        pos_hint:{'center_x':.5, 'center_y':.5}
 
             MDBottomNavigationItem:
                 name: 'stat'
@@ -345,7 +348,7 @@ ScreenManager:
 	                            icon:"tie"
 	                            pos_hint:{"center_x":.5,"center_y":.5}
 	                            halign:"center"
-	                            font_size: "45sp"
+	                            font_size: "60sp"
 	                            theme_text_color:"Custom"
 	                            text_color: .3, .3, .3, 1
 	                            md_bg_color: 0, 0, 0, 1
@@ -370,7 +373,7 @@ ScreenManager:
 	                            icon:"account-tie"
 	                            pos_hint:{"center_x":.5,"center_y":.5}
 	                            halign:"center"
-	                            font_size: "45sp"
+	                            font_size: "60sp"
 	                            theme_text_color:"Custom"
 	                            text_color:  .3, .3, .3, 1
 	                            md_bg_color: 0, 0, 0, 1
@@ -395,7 +398,7 @@ ScreenManager:
 	                            icon:"horse-human"
 	                            pos_hint:{"center_x":.5,"center_y":.5}
 	                            halign:"center"
-	                            font_size: "45sp"
+	                            font_size: "60sp"
 	                            theme_text_color:"Custom"
 	                            text_color:  .3, .3, .3, 1
 	                            md_bg_color: 0, 0, 0, 1
@@ -500,7 +503,6 @@ ScreenManager:
 <CheckCard@MDCard>:
     #orientation: "vertical"
     md_bg_color: .3, .3, .3, .5
-    pos_hint:{"center_x":.5,"center_y":.4}
     padding: "10dp"
     #spacing: "5dp"
     border_radius: 50
